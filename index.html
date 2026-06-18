@@ -11,7 +11,7 @@
     --bg: #050d1a;
     --bg2: #0a1628;
     --bg3: #0f1f38;
-    --card: #0d1c33;
+    --card: rgba(13, 28, 51, 0.75);
     --blue: #2563eb;
     --blue-bright: #3b82f6;
     --cyan: #06b6d4;
@@ -30,7 +30,7 @@
     --bg: #f0f4ff;
     --bg2: #e8eeff;
     --bg3: #dce6ff;
-    --card: #ffffff;
+    --card: rgba(255, 255, 255, 0.85);
     --blue: #2563eb;
     --blue-bright: #1d4ed8;
     --cyan: #0284c7;
@@ -397,6 +397,8 @@
   }
   .project-card {
     background: var(--card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 26px;
@@ -426,22 +428,31 @@
     font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 8px;
   }
   .project-desc { color: var(--muted); font-size: 0.87rem; margin-bottom: 16px; flex: 1; }
-  .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+  .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
   .tech-tag {
-    background: var(--bg3);
-    color: var(--muted); font-size: 0.72rem;
-    padding: 2px 8px; border-radius: 4px;
+    background: rgba(37,99,235,0.08);
+    border: 1px solid rgba(59,130,246,0.25);
+    color: var(--accent); font-size: 0.72rem; font-weight: 600;
+    padding: 4px 10px; border-radius: 6px;
+    letter-spacing: 0.3px;
   }
+  .project-links-container { display: flex; gap: 12px; margin-top: auto; flex-wrap: wrap; align-self: flex-start; }
   .project-link {
     display: inline-flex; align-items: center; gap: 6px;
-    color: var(--accent); font-size: 0.83rem; font-weight: 600;
+    color: var(--text); font-size: 0.82rem; font-weight: 600;
     text-decoration: none;
-    border: 1px solid rgba(59,130,246,0.3);
-    padding: 7px 14px; border-radius: 7px;
-    align-self: flex-start;
-    transition: background 0.2s, border-color 0.2s;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 8px 16px; border-radius: 8px;
+    transition: all 0.2s;
   }
-  .project-link:hover { background: rgba(37,99,235,0.15); border-color: var(--accent); }
+  .project-link:hover { 
+    background: rgba(37,99,235,0.1); border-color: var(--blue-bright); color: var(--blue-bright); transform: translateY(-2px);
+  }
+  .project-link.primary {
+    background: var(--blue); color: #fff; border-color: var(--blue);
+  }
+  .project-link.primary:hover { background: var(--blue-bright); color: #fff; }
 
   /* ---- CERTIFICATIONS ---- */
   #certifications { background: var(--bg); }
@@ -752,25 +763,29 @@
       <div class="project-name">🤖 Automated Forex Trading Bot</div>
       <div class="project-desc">Final year project — an automated trading bot using Python and MetaTrader 5 API deployed on AWS EC2. Applies ML and algorithmic strategies to analyse forex market signals and execute trades autonomously.</div>
       <div class="tech-tags">
-        <span class="tech-tag">Python</span><span class="tech-tag">MetaTrader 5 API</span><span class="tech-tag">AWS EC2</span>
+        <span class="tech-tag">Python</span><span class="tech-tag">MetaTrader 5 API</span><span class="tech-tag">AWS EC2</span><span class="tech-tag">Algorithms</span><span class="tech-tag">Machine Learning</span>
       </div>
-      <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        View Code
-      </a>
+      <div class="project-links-container">
+        <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repo
+        </a>
+      </div>
     </div>
 
     <div class="project-card" data-domain="ml">
       <span class="project-domain-badge badge-ml">Machine Learning / AI</span>
       <div class="project-name">💧 Water Quality Prediction</div>
-      <div class="project-desc">Internship project at Edunet Foundation — applied ML techniques to analyse and predict water potability from environmental parameters using classification models.</div>
+      <div class="project-desc">Internship project at Edunet Foundation — applied ML techniques to analyse and predict water potability from environmental parameters using robust classification models.</div>
       <div class="tech-tags">
-        <span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Jupyter</span>
+        <span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Classification</span>
       </div>
-      <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        View Code
-      </a>
+      <div class="project-links-container">
+        <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repo
+        </a>
+      </div>
     </div>
 
     <div class="project-card" data-domain="ml ds">
@@ -779,14 +794,16 @@
         <span class="project-domain-badge badge-ds" style="margin-bottom: 0;">Data Science</span>
       </div>
       <div class="project-name">📈 Big Sale Prediction</div>
-      <div class="project-desc">YBI Foundation internship project — built a regression model to predict big sale outcomes using feature engineering and data preprocessing on a retail dataset.</div>
+      <div class="project-desc">YBI Foundation internship project — built a regression model to predict big sale outcomes using extensive feature engineering and data preprocessing on a massive retail dataset.</div>
       <div class="tech-tags">
-        <span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">NumPy</span><span class="tech-tag">Seaborn</span><span class="tech-tag">Scikit-learn</span>
+        <span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Regression</span>
       </div>
-      <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        View Code
-      </a>
+      <div class="project-links-container">
+        <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repo
+        </a>
+      </div>
     </div>
 
     <div class="project-card" data-domain="ml ds">
@@ -795,14 +812,19 @@
         <span class="project-domain-badge badge-ds" style="margin-bottom: 0;">Data Science</span>
       </div>
       <div class="project-name">🌾 AgriSense AI</div>
-      <div class="project-desc">AI-powered smart agriculture platform developed for the 1M1B × IBM SkillsBuild Internship. Recommends optimal crops based on soil nutrients and weather conditions, and analyzes crop disease risks.</div>
+      <div class="project-desc">AI-powered smart agriculture platform developed for the 1M1B × IBM SkillsBuild Internship. Recommends optimal crops based on soil nutrients and analyzes disease risks.</div>
       <div class="tech-tags">
-        <span class="tech-tag">Python</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Pandas</span>
+        <span class="tech-tag">Python</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Random Forest</span>
       </div>
-      <a href="https://agrisense-ai-gmghdkgbw7gqdd8epzfuvv.streamlit.app/" target="_blank" class="project-link">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-        Live Demo
-      </a>
+      <div class="project-links-container">
+        <a href="https://agrisense-ai-gmghdkgbw7gqdd8epzfuvv.streamlit.app/" target="_blank" class="project-link primary">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          Live Demo
+        </a>
+        <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+      </div>
     </div>
 
     <div class="project-card" data-domain="ml ds">
@@ -811,14 +833,16 @@
         <span class="project-domain-badge badge-ds" style="margin-bottom: 0;">Data Science</span>
       </div>
       <div class="project-name">💻 Laptop Price Estimation</div>
-      <div class="project-desc">Regression model predicting laptop prices with an 81.2% R² score. Implements regex specifications parsing (CPU, GPU, SSD/HDD, and screen resolution) and log-target transformation to manage price outliers.</div>
+      <div class="project-desc">Regression model predicting laptop prices with an impressive <strong>81.2% R² score</strong>. Implements regex specifications parsing and log-target transformation to manage price outliers.</div>
       <div class="tech-tags">
-        <span class="tech-tag">Python</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Regex</span>
+        <span class="tech-tag">Python</span><span class="tech-tag">Regex</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Random Forest</span>
       </div>
-      <a href="https://github.com/NishantSharma2004/Machine-Learning/tree/main/Laptop_Price_Prediction" target="_blank" class="project-link">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        View Code
-      </a>
+      <div class="project-links-container">
+        <a href="https://github.com/NishantSharma2004/Machine-Learning/tree/main/Laptop_Price_Prediction" target="_blank" class="project-link">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repo
+        </a>
+      </div>
     </div>
 
     <div class="project-card" data-domain="ml py">
@@ -827,27 +851,31 @@
         <span class="project-domain-badge badge-py" style="margin-bottom: 0;">Python Developer</span>
       </div>
       <div class="project-name">🏍️ Used Bike Price Prediction</div>
-      <div class="project-desc">Supervised machine learning pipeline predicting resale values of used motorcycles. Built using an optimized Random Forest Regressor and deployed as an interactive Flask microservice backend.</div>
+      <div class="project-desc">Supervised machine learning pipeline predicting resale values of used motorcycles. Built using an optimized Random Forest Regressor and deployed as an interactive Flask microservice.</div>
       <div class="tech-tags">
         <span class="tech-tag">Python</span><span class="tech-tag">Flask</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Joblib</span>
       </div>
-      <a href="https://github.com/NishantSharma2004/Machine-Learning/tree/main/Used_Bike_Price_Prediction" target="_blank" class="project-link">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        View Code
-      </a>
+      <div class="project-links-container">
+        <a href="https://github.com/NishantSharma2004/Machine-Learning/tree/main/Used_Bike_Price_Prediction" target="_blank" class="project-link">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repo
+        </a>
+      </div>
     </div>
 
     <div class="project-card" data-domain="da">
       <span class="project-domain-badge badge-da">Data Analytics</span>
       <div class="project-name">📊 Mobile Sales Dashboard</div>
-      <div class="project-desc">Interactive Power BI dashboard visualising mobile sales data across regions and categories. Used DAX for advanced KPI calculations and Excel for data preparation.</div>
+      <div class="project-desc">Interactive Power BI dashboard visualising mobile sales data across regions and categories. Used advanced DAX for KPI calculations and Excel for robust data preparation.</div>
       <div class="tech-tags">
-        <span class="tech-tag">Power BI</span><span class="tech-tag">Excel</span><span class="tech-tag">DAX</span>
+        <span class="tech-tag">Power BI</span><span class="tech-tag">Excel</span><span class="tech-tag">DAX</span><span class="tech-tag">Data Visualization</span>
       </div>
-      <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        View Code
-      </a>
+      <div class="project-links-container">
+        <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repo
+        </a>
+      </div>
     </div>
 
     <div class="project-card" data-domain="da">
@@ -855,25 +883,29 @@
       <div class="project-name">📉 Customer Churn Analysis</div>
       <div class="project-desc">Analysed customer churn patterns using Excel pivot tables and charts. Identified key factors driving customer attrition and presented findings through compelling visual storytelling.</div>
       <div class="tech-tags">
-        <span class="tech-tag">Excel</span><span class="tech-tag">Pivot Tables</span><span class="tech-tag">Data Visualization</span>
+        <span class="tech-tag">Excel</span><span class="tech-tag">Pivot Tables</span><span class="tech-tag">Dashboarding</span>
       </div>
-      <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        View Code
-      </a>
+      <div class="project-links-container">
+        <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repo
+        </a>
+      </div>
     </div>
 
     <div class="project-card" data-domain="web">
       <span class="project-domain-badge badge-web">Web Development</span>
       <div class="project-name">✅ TaskFlow Web App</div>
-      <div class="project-desc">Full-stack task management application with real-time collaboration. Built with React + TypeScript on the frontend and Node.js + PostgreSQL on the backend, deployed via Vercel and Render.</div>
+      <div class="project-desc">Full-stack task management application with real-time collaboration. Built with React + TypeScript on the frontend and Node.js + PostgreSQL on the backend, deployed via Vercel.</div>
       <div class="tech-tags">
-        <span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Node.js</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Supabase</span><span class="tech-tag">Vercel</span>
+        <span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Node.js</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Supabase</span>
       </div>
-      <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        View Code
-      </a>
+      <div class="project-links-container">
+        <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repo
+        </a>
+      </div>
     </div>
 
     <div class="project-card" data-domain="web">
@@ -881,28 +913,33 @@
       <div class="project-name">🍽️ Royal Restaurant Website</div>
       <div class="project-desc">A fully responsive restaurant landing page featuring an interactive menu, elegant UI, and smooth animations. Built with vanilla HTML, CSS, and JavaScript.</div>
       <div class="tech-tags">
-        <span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span><span class="tech-tag">JavaScript</span><span class="tech-tag">UI/UX</span>
       </div>
-      <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        View Code
-      </a>
+      <div class="project-links-container">
+        <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repo
+        </a>
+      </div>
     </div>
 
     <div class="project-card" data-domain="py">
       <span class="project-domain-badge badge-py">Python Developer</span>
-      <div class="project-name">🏦 Simple Bank Registration System</div>
-      <div class="project-desc">Python-based bank registration and account management system built during the Learn and Build internship, using Tkinter for the GUI interface and core OOPs concepts.</div>
+      <div class="project-name">🏦 Bank Registration System</div>
+      <div class="project-desc">Python-based bank registration and account management system built during the Learn and Build internship, using Tkinter for the GUI interface and robust OOPs concepts.</div>
       <div class="tech-tags">
-        <span class="tech-tag">Python</span><span class="tech-tag">Tkinter</span><span class="tech-tag">OOPs</span>
+        <span class="tech-tag">Python</span><span class="tech-tag">Tkinter GUI</span><span class="tech-tag">OOPs</span><span class="tech-tag">File Handling</span>
       </div>
-      <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
-        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        View Code
-      </a>
+      <div class="project-links-container">
+        <a href="https://github.com/NishantSharma2004" target="_blank" class="project-link">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013-.4c1.02.005 2.04.138 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repo
+        </a>
+      </div>
     </div>
 
   </div>
+
 </section>
 
 <!-- CERTIFICATIONS -->
